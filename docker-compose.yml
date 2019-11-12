@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  polls-postgres:
+    image: "postgres"
+    container_name: polls-postgres
+    environment:
+      POSTGRES_USER: polls
+      POSTGRES_PASSWORD: polls
+    networks:
+      bookstore:
+    ports:
+      - 5432:5432
+  polls-backend:
+    build:
+      context: .
+    container_name: polls-backend
+    networks:
+      bookstore:
+    ports:
+      - 8080:8080
+    depends_on:
+      - polls-postgres
+networks:
+  bookstore:
+    driver: bridge
