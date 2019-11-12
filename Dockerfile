@@ -9,7 +9,7 @@ RUN cd /tmp/programm \
 
 FROM openjdk:8-jre-slim
 COPY --from=build /tmp/programm/build/libs/polls-0.0.1-SNAPSHOT.jar /opt/programm/polls-0.0.1-SNAPSHOT.jar
-EXPOSE 8085
+EXPOSE 8080
 WORKDIR /opt/programm
 ENTRYPOINT ["java"]
 CMD ["-jar", "polls-0.0.1-SNAPSHOT.jar"]
